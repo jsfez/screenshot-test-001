@@ -28,7 +28,15 @@ test.describe("Visual Regression for TPG Categories", () => {
         await page.waitForTimeout(500);
       }
 
-      await argosScreenshot(page, `${url}tpg-categories`);
+      const remainingButtonsCount = await page
+        .getByRole("button", { name: "View More" })
+        .count();
+      console.log(
+        'example-2  - remaining closes "view more" buttons: ' +
+          remainingButtonsCount
+      );
+
+      await argosScreenshot(page, `example-2`);
     });
   }
 });
